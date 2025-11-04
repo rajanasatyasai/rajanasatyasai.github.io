@@ -1,0 +1,12 @@
+{
+  "name": "rrssdp-website",
+  "version": "1.0.0",
+  "description": "Personal website for Rajana Rama Satya Sai Durga Prasad",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node -e \"require('http').createServer((req,res)=>{const fs=require('fs');const path=require('path');let file=req.url==='/'?'/index.html':req.url;let ext=path.extname(file);let types={'html':'text/html','css':'text/css','js':'text/javascript','svg':'image/svg+xml','pdf':'application/pdf'};res.setHeader('Content-Type',types[ext.slice(1)]||'text/plain');fs.readFile('.'+file,(e,d)=>{if(e){res.writeHead(404);res.end('404');}else{res.writeHead(200);res.end(d);}})}).listen(8000,()=>console.log('Server: http://localhost:8000'));\""
+  },
+  "keywords": ["portfolio", "cv", "website"],
+  "author": "Rajana Rama Satya Sai Durga Prasad",
+  "license": "MIT"
+}

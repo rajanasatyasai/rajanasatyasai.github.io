@@ -1,0 +1,21 @@
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Rajana Rama Satya Sai Durga Prasad — <a href="CV.html">Original CV</a> · <a href="assets/cv-resume.pdf" download>PDF CV</a></p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', ()=>{
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      mainNav.classList.toggle('open');
+    });
+    document.querySelectorAll('.main-nav a').forEach(a=>{
+      a.addEventListener('click', ()=>{ if(mainNav.classList.contains('open')){ mainNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); } });
+    });
+  </script>
+</body>
+</html>
