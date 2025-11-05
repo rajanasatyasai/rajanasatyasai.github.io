@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-mode">
+    <div style="padding: 2rem; max-width: 700px; margin: 2rem auto;">
+        <h2>Contact Form Test</h2>
+        
+        <div class="card">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">-- Select a topic --</option>
+                        <option value="Test 1">Test 1</option>
+                        <option value="Test 2">Test 2</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                    Send Test Message
+                </button>
+            </form>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 1rem; background: #f0f0f0; border-radius: 8px;">
+            <h3>Debug Info:</h3>
+            <p>Click on each input field above. They should:</p>
+            <ul>
+                <li>Get a blue border when focused</li>
+                <li>Allow you to type text</li>
+                <li>Show dropdown options (for select)</li>
+            </ul>
+            <p id="testResult"></p>
+        </div>
+    </div>
+    
+    <script>
+        // Test form functionality
+        const inputs = document.querySelectorAll('input, select, textarea');
+        const testResult = document.getElementById('testResult');
+        
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                console.log('Focused:', input.name);
+                testResult.innerHTML = `✅ Focused on: ${input.name}`;
+            });
+            
+            input.addEventListener('input', () => {
+                console.log('Input changed:', input.name, input.value);
+                testResult.innerHTML = `✅ Typing in: ${input.name} - Value: "${input.value}"`;
+            });
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form works! All inputs are functional.');
+        });
+    </script>
+</body>
+</html>
